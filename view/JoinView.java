@@ -8,8 +8,7 @@ import serviceImpl.AuthServiceImpl;
 import java.util.Scanner;
 
 public class JoinView {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(Scanner sc) {
         System.out.println("아이디, 비밀번호, 비밀번호확인, 이름, 주민번호, 전화번호, " +
                 "주소, 직업, 무게, 키를 입력하세요");
         AuthService auth = AuthServiceImpl.getInstance();

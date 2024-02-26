@@ -12,11 +12,11 @@ import serviceImpl.UtilServiceImpl;
 import java.util.Scanner;
 
 public class GradeView {
-    public static void main(String[] args) {
+    public static void main(Scanner sc) {
 
         System.out.println("이름을 입력하세요.");
 
-        Scanner sc = new Scanner(System.in);
+
         UtilService util = UtilServiceImpl.getInstance();
         GradeService grade = GradeServiceImpl.getInstance();
         PersonDto student = new PersonBuilder()
