@@ -14,16 +14,16 @@ public class BoardView {
         List<BoardDto> articles = new ArrayList<>();
         UtilService util = UtilServiceImpl.getInstance();
         BoardDto article = new BoardBuilder()
-                .title(util.createdRandomTitle())
-                .content(util.createdRandomContent())
-                .writer(util.createdRandomName())
+                .title(util.createRandomTitle())
+                .content(util.createRandomContent())
+                .writer(util.createRandomName())
                 .build();
 
         for(int i=0;i<5;i++) {
             articles.add(new BoardBuilder()
-                    .title(util.createdRandomTitle())
-                    .content(util.createdRandomContent())
-                    .writer(util.createdRandomName())
+                    .title(util.createRandomTitle())
+                    .content(util.createRandomContent())
+                    .writer(util.createRandomName())
                     .build());
         }
 

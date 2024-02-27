@@ -1,7 +1,8 @@
 package model;
 
 public class PersonDto {
-    private String id;
+    private int id;
+    private String username;
     private String password;
     private String checkPassword;
     private String name;
@@ -14,9 +15,9 @@ public class PersonDto {
     private double weight;
 
 
-    public PersonDto(String id, String password, String checkPassword, String name, int residentRegistrationNumber, int phoneNumber, String address, String job, double height, double weight) {
+    public PersonDto(String username, String password, String checkPassword, String name, int residentRegistrationNumber, int phoneNumber, String address, String job, double height, double weight) {
 
-        this.id = id;
+        this.username = username;
         this.password = password;
         this.checkPassword = checkPassword;
         this.name = name;
@@ -28,12 +29,12 @@ public class PersonDto {
         this.weight = weight;
     }
 
-    public String getId() {
-        return id;
+    public String getUsername() {
+        return username;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -103,7 +104,7 @@ public class PersonDto {
     @Override
     public String toString() {
         return "PersonDto{" +
-                "id='" + id + '\'' +
+                "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", checkPassword='" + checkPassword + '\'' +
                 ", name='" + name + '\'' +

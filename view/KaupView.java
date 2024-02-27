@@ -13,8 +13,8 @@ public class KaupView {
     public static void main(Scanner sc) {
         UtilService util = UtilServiceImpl.getInstance();
         PersonDto person = new PersonBuilder()
-                .height(util.createdRandomDouble(150,50))
-                .weight(util.createdRandomDouble(30,100))
+                .height(util.createRandomDouble(150,50))
+                .weight(util.createRandomDouble(30,100))
                 .build();
         KaupService kaup = KaupServiceImpl.getInstance();
 

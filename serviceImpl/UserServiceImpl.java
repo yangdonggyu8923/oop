@@ -2,26 +2,21 @@ package serviceImpl;
 
 import builder.PersonBuilder;
 import model.PersonDto;
-import service.AuthService;
+import service.UserSerivice;
 import service.UtilService;
-
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class AuthServiceImpl implements AuthService {
-    private static AuthService instance = new AuthServiceImpl();
+public class UserServiceImpl implements UserSerivice {
+    private static UserSerivice instance = new UserServiceImpl();
+    Map<String, PersonDto> users2;
 
-    Map<String, PersonDto> users;
-
-    private AuthServiceImpl() {
-        this.users = new HashMap<>();
+    public UserServiceImpl() {
+        this.users2 = new HashMap<>();
     }
-
-    public static AuthService getInstance(){
-        return instance;
-    }
+    public static UserSerivice getInstance(){return instance;}
 
     @Override
     public String login() {
@@ -31,7 +26,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public String join(Scanner sc) {
         System.out.println("아이디, 비밀번호, 비밀번호확인, 이름, 주민번호, 전화번호, " +
-                "주소, 직업, 무게, 키를 입력하세요");
+                "주소, 직업을 입력하세요");
         PersonDto person = new PersonBuilder()
                 .username(sc.next())
                 .password(sc.next())
@@ -41,11 +36,16 @@ public class AuthServiceImpl implements AuthService {
                 .phoneNumber(sc.nextInt())
                 .address(sc.next())
                 .job(sc.next())
-                .weight(0.0)
-                .height(0.0)
-                .build()
-                ;
-        return null;
+                .build();
+        String result = ("ID : " +person.getUsername()+
+                "\n비밀번호 : "+person.getPassword()+
+                "\n비밀번호확인 : "+person.getCheckPassword()+
+                "\n이름 : "+person.getName()+
+                "\n주민번호 : "+person.getResidentRegistrationNumber()+
+                "\n전화번호 : "+person.getPhoneNumber()+
+                "\n주소 : "+person.getAddress()+
+                "\n직업 : "+person.getJob());
+        return result;
     }
 
     @Override
@@ -62,8 +62,8 @@ public class AuthServiceImpl implements AuthService {
                     .name(util.createRandomName())
                     .build());
         }
-        users = map;
-        return "더미값 추가";
+        users2 = map;
+        return "";
     }
 
     @Override
@@ -74,14 +74,12 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public Map<String, PersonDto> getUserMap() {
-        users.forEach((k,v)-> System.out.println("{"+k+","+v+"},"));
-        return users; // map을 컨트롤러로 보냄
+        users2.forEach((k,v)-> System.out.println("{"+k+','+v+"}"));
+        return users2; // map 컨트롤러로 전송
     }
 
     @Override
     public String count() {
-        return users.size()+"";
+        return users2.size()+""; // 회원수
     }
-
 }
-

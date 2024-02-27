@@ -23,9 +23,9 @@ public class GradeView {
                             .name(sc.next())
                             .build();
         SubjectDto subjects = new SubjectBuilder()
-                            .korean(util.createdRandomInteger(0,100))
-                            .math(util.createdRandomInteger(0,100))
-                            .english(util.createdRandomInteger(0,100))
+                            .korean(util.createRandomInteger(0,100))
+                            .math(util.createRandomInteger(0,100))
+                            .english(util.createRandomInteger(0,100))
                             .build();
 
         int totalScore = grade.getTotalScore(subjects);
