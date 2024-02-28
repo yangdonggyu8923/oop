@@ -24,7 +24,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public String login() {
+    public String login(Scanner sc) {
         return "";
     }
 
@@ -73,13 +73,18 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
+    public PersonDto findUserById(Scanner sc) {
+        return null;
+    }
+
+    @Override
     public Map<String, PersonDto> getUserMap() {
         users.forEach((k,v)-> System.out.println("{"+k+","+v+"},"));
         return users; // map을 컨트롤러로 보냄
     }
 
     @Override
-    public String count() {
+    public String countUser() {
         return users.size()+"";
     }
 

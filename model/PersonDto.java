@@ -103,18 +103,14 @@ public class PersonDto {
 
     @Override
     public String toString() {
-        return "PersonDto{" +
+        return "개인정보{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", checkPassword='" + checkPassword + '\'' +
                 ", name='" + name + '\'' +
                 ", residentRegistrationNumber=" + residentRegistrationNumber +
                 ", phoneNumber=" + phoneNumber +
                 ", address='" + address + '\'' +
-                ", job='" + job + '\'' +
-                ", height=" + height +
-                ", weight=" + weight +
-                '}';
+                ", job='" + job + '\'' + "}";
     }
 
     public double getWeight() {

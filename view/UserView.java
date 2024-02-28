@@ -6,8 +6,9 @@ import java.util.Scanner;
 
 public class UserView {
     public static void main(Scanner sc) {
-        UserController ctrl = new UserController();
-        ctrl.addUsers();
+        UserController userController = new UserController();
+        String msg = userController.addUsers();
+        System.out.println("userController.addUsers() 결과 : " + msg);
         while(true){
             System.out.println("[메뉴]\n" +
                     "0-종료\n" +
@@ -25,23 +26,27 @@ public class UserView {
                     System.out.println("종료");return;
                 case "1":
                     System.out.println("====회원가입====");
-                    System.out.println(ctrl.join(sc));
+                    System.out.println(userController.join(sc));
                     break;
                 case "2":
                     System.out.println("====로그인====");
+                    System.out.println(userController.login(sc));
                     break;
                 case "3":
                     System.out.println("====ID검색====");
+                    System.out.println(userController.findUserById(sc));
                     break;
                 case "4":
                     System.out.println("====비번변경====");
+                    System.out.println(userController.changePassword(sc));
                     break;
                 case "5":
                     System.out.println("====탈퇴====");
+                    System.out.println(userController.secessionUser(sc));
                     break;
                 case "6":
                     System.out.println("====회원목록====");
-                    System.out.println(ctrl.getUserMap());
+                    userController.getUserMap();
                     break;
                 case "7":
                     System.out.println("====이름검색====");
@@ -51,7 +56,7 @@ public class UserView {
                     break;
                 case "9":
                     System.out.println("====회원수====");
-                    System.out.println(ctrl.count());
+                    System.out.println(userController.count());
                     break;
             }
         }
