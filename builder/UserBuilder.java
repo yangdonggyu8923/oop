@@ -1,8 +1,8 @@
 package builder;
 
-import model.PersonDto;
+import model.UserDto;
 
-public class PersonBuilder {
+public class UserBuilder {
     private String username;
     private String password;
     private String checkPassword;
@@ -14,50 +14,50 @@ public class PersonBuilder {
     private double weight;
     private double height;
 
-    public PersonBuilder username(String username){
+    public UserBuilder username(String username){
         this.username = username;
         return this;
     }
-    public PersonBuilder password(String password){
+    public UserBuilder password(String password){
         this.password = password;
         return this;
     }
-    public PersonBuilder checkPassword(String checkPassword){
+    public UserBuilder checkPassword(String checkPassword){
         this.checkPassword = checkPassword;
         return this;
     }
-    public PersonBuilder name(String name){
+    public UserBuilder name(String name){
         this.name = name;
         return this;
     }
 
-    public PersonBuilder residentRegistrationNumber(int residentRegistrationNumber){
+    public UserBuilder residentRegistrationNumber(int residentRegistrationNumber){
         this.residentRegistrationNumber = residentRegistrationNumber;
         return this;
     }
-    public PersonBuilder phoneNumber(int phoneNumber){
+    public UserBuilder phoneNumber(int phoneNumber){
         this.phoneNumber = phoneNumber;
         return this;
     }
-    public PersonBuilder address(String address){
+    public UserBuilder address(String address){
         this.address = address;
         return this;
     }
-    public  PersonBuilder job(String job){
+    public UserBuilder job(String job){
         this.job = job;
         return this;
     }
-    public  PersonBuilder weight(double weight) {
+    public UserBuilder weight(double weight) {
         this.weight = weight;
         return this;
     }
-    public  PersonBuilder height(double height) {
+    public UserBuilder height(double height) {
         this.height = height;
         return this;
     }
 
-        public PersonDto build(){
-        return new PersonDto(username, password, checkPassword, name,
+        public UserDto build(){
+        return new UserDto(username, password, checkPassword, name,
                 residentRegistrationNumber, phoneNumber, address, job, weight, height);
     }
 

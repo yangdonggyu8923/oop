@@ -1,7 +1,7 @@
 package serviceImpl;
 
-import builder.PersonBuilder;
-import model.PersonDto;
+import builder.UserBuilder;
+import model.UserDto;
 import service.AuthService;
 import service.UtilService;
 
@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class AuthServiceImpl implements AuthService {
     private static AuthService instance = new AuthServiceImpl();
 
-    Map<String, PersonDto> users;
+    Map<String, UserDto> users;
 
     private AuthServiceImpl() {
         this.users = new HashMap<>();
@@ -32,7 +32,7 @@ public class AuthServiceImpl implements AuthService {
     public String join(Scanner sc) {
         System.out.println("아이디, 비밀번호, 비밀번호확인, 이름, 주민번호, 전화번호, " +
                 "주소, 직업, 무게, 키를 입력하세요");
-        PersonDto person = new PersonBuilder()
+        UserDto person = new UserBuilder()
                 .username(sc.next())
                 .password(sc.next())
                 .checkPassword(sc.next())
@@ -50,12 +50,12 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String addUsers() {
-        Map<String, PersonDto> map = new HashMap<>();
+        Map<String, UserDto> map = new HashMap<>();
         UtilService util = UtilServiceImpl.getInstance();
 
         for (int i = 0; i < 5; i++) {
             String username = util.createRandomUsername();
-            map.put(username, new PersonBuilder()
+            map.put(username, new UserBuilder()
                     .username(username)
                     .password("1")
                     .checkPassword("1")
@@ -67,18 +67,18 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public PersonDto findUser(String username) {
-        PersonDto user = new PersonBuilder().build();
+    public UserDto findUser(String username) {
+        UserDto user = new UserBuilder().build();
         return user;
     }
 
     @Override
-    public PersonDto findUserById(Scanner sc) {
+    public UserDto findUserById(Scanner sc) {
         return null;
     }
 
     @Override
-    public Map<String, PersonDto> getUserMap() {
+    public Map<String, UserDto> getUserMap() {
         users.forEach((k,v)-> System.out.println("{"+k+","+v+"},"));
         return users; // map을 컨트롤러로 보냄
     }
