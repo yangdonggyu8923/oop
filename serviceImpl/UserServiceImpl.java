@@ -1,7 +1,6 @@
 package serviceImpl;
 
-import builder.UserBuilder;
-import model.UserDto;
+import model.User;
 import service.UserSerivice;
 import service.UtilService;
 
@@ -12,16 +11,12 @@ import java.util.Map;
 
 public class UserServiceImpl implements UserSerivice {
     private static UserSerivice instance = new UserServiceImpl();
-    Map<String, UserDto> users;
-
-//    List<Map<String, UserDto>> jobNameList;
-//
-//    public UserServiceImpl() {
-//        this.jobNameList = new ArrayList<>();
-//    }
+    Map<String, User> users;
+    List<User> usersList;
 
     public UserServiceImpl() {
         this.users = new HashMap<>();
+        this.usersList = new ArrayList<>();
     }
 
     public static UserSerivice getInstance() {
@@ -29,8 +24,8 @@ public class UserServiceImpl implements UserSerivice {
     }
 
     @Override
-    public String login(UserDto user) {
-        UserDto userInMap = users.get(user.getUsername());
+    public String login(User user) {
+        User userInMap = users.get(user.getUsername());
         String msg = "";
         if (userInMap == null){
             msg = "유효하지 않은 아이디입니다.";
@@ -44,19 +39,19 @@ public class UserServiceImpl implements UserSerivice {
     }
 
     @Override
-    public String join(UserDto user) {
+    public String join(User user) {
         users.put(user.getUsername(), user);
         return "회원가입 완료";
     }
 
     @Override
     public String addUsers() {
-        Map<String, UserDto> map = new HashMap<>();
+        Map<String, User> map = new HashMap<>();
         UtilService util = UtilServiceImpl.getInstance();
 
         for (int i = 0; i < 5; i++) {
             String username = util.createRandomUsername();
-            map.put(username, new UserBuilder()
+            map.put(username, User.builder()
                     .username(username)
                     .password("1")
                     .checkPassword("1")
@@ -68,8 +63,8 @@ public class UserServiceImpl implements UserSerivice {
     }
 
     @Override
-    public String findUserById(UserDto user) {
-        UserDto userInMap = users.get(user.getUsername());
+    public String findUserById(User user) {
+        User userInMap = users.get(user.getUsername());
         String msg = "";
         if(userInMap == null){
             msg = "존재하지 않는 아이디 입니다.";
@@ -80,9 +75,9 @@ public class UserServiceImpl implements UserSerivice {
     }
 
     @Override
-    public String changePassword(UserDto user) {
+    public String changePassword(User user) {
 //        users.get(user.getUsername()).setPassword();
-        UserDto userInMap = users.get(user.getUsername());
+        User userInMap = users.get(user.getUsername());
         String msg = "";
         if (userInMap != null){
             msg = "아이디 동일, 비밀번호 변경완료";
@@ -94,8 +89,8 @@ public class UserServiceImpl implements UserSerivice {
     }
 
     @Override
-    public String secessionUser(UserDto user) {
-        UserDto userInMap = users.get(user.getUsername());
+    public String secessionUser(User user) {
+        User userInMap = users.get(user.getUsername());
         String msg = "";
         if (userInMap != null){
             if(userInMap.getPassword().equals(user.getPassword())){
@@ -108,10 +103,8 @@ public class UserServiceImpl implements UserSerivice {
     }
 
     @Override
-    public List<UserDto> findUserByName(UserDto user) {
-        List<Map<String, UserDto>> namesList = new ArrayList<>();
-        Map<String ,List<UserDto>> namesMap = new HashMap<>();
-        UserDto userInMap = users.get(user.getName());
+    public List<User> findUserByName(User user) {
+        User userInMap = users.get(user.getName());
         String msg = "";
         if (userInMap != null){
             msg = "해당 이름을 가진 사람";
@@ -122,8 +115,8 @@ public class UserServiceImpl implements UserSerivice {
     }
 
     @Override
-    public List<UserDto> findUserByJob(UserDto user) {
-        UserDto userInList = users.get(user.getJob());
+    public List<User> findUserByJob(User user) {
+        User userInList = users.get(user.getJob());
         String msg = "";
         if(userInList != null){
             msg = "해당 직업을 가진 사람";
@@ -134,12 +127,12 @@ public class UserServiceImpl implements UserSerivice {
     }
 
     @Override
-    public List<UserDto> getUserList() {
+    public List<User> getUserList() {
         return new ArrayList<>(users.values());
     }
 
     @Override
-    public Map<String, UserDto> getUserMap() {
+    public Map<String, User> getUserMap() {
         users.forEach((k, v) -> System.out.println("{" + k + ',' + v + "}"));
         return users;
     }

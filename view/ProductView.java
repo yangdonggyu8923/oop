@@ -1,14 +1,13 @@
 package view;
 
-import builder.ProductBuilder;
-import model.ProductDto;
+import model.Product;
 import service.UtilService;
 import serviceImpl.UtilServiceImpl;
 
 public class ProductView {
     public static void main(String[] args) {
         UtilService util = UtilServiceImpl.getInstance();
-        ProductDto product = new ProductBuilder()
+        Product product = Product.builder()
                 .pno(util.createRandomInteger(1,10))
                 .name(util.createRandomName())
                 .company(util.createRandomCompany())

@@ -1,7 +1,7 @@
 package controller;
 
-import builder.UserBuilder;
-import model.UserDto;
+
+import model.User;
 import service.AuthService;
 import serviceImpl.AuthServiceImpl;
 
@@ -21,7 +21,7 @@ public class AuthController {
     }
 
     public String join(Scanner sc) {
-        new UserBuilder()
+        User.builder()
                 .username(sc.next())
                 .password(sc.next())
                 .checkPassword(sc.next())
@@ -38,12 +38,12 @@ public class AuthController {
         return auth.addUsers();
     }
 
-    public UserDto findUser(String username) {
-        UserDto user = auth.findUser(username);
+    public User findUser(String username) {
+        User user = auth.findUser(username);
         return user;
     }
 
-    public Map<String, UserDto> getUserMap() {
+    public Map<String, User> getUserMap() {
         return auth.getUserMap();
     }
     public String countUser(){

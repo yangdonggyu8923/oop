@@ -1,7 +1,6 @@
 package view;
 
-import builder.BoardBuilder;
-import model.BoardDto;
+import model.Board;
 import service.UtilService;
 import serviceImpl.UtilServiceImpl;
 
@@ -11,16 +10,16 @@ import java.util.Scanner;
 
 public class BoardView {
     public static void main(Scanner sc) {
-        List<BoardDto> articles = new ArrayList<>();
+        List<Board> articles = new ArrayList<>();
         UtilService util = UtilServiceImpl.getInstance();
-        BoardDto article = new BoardBuilder()
+        Board article = Board.builder()
                 .title(util.createRandomTitle())
                 .content(util.createRandomContent())
                 .writer(util.createRandomName())
                 .build();
 
         for(int i=0;i<5;i++) {
-            articles.add(new BoardBuilder()
+            articles.add(Board.builder()
                     .title(util.createRandomTitle())
                     .content(util.createRandomContent())
                     .writer(util.createRandomName())
@@ -28,7 +27,7 @@ public class BoardView {
         }
 
 
-        for(BoardDto i : articles){
+        for(Board i : articles){
             System.out.println(i.toString());
         }
 

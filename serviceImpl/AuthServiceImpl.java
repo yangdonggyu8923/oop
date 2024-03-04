@@ -1,7 +1,7 @@
 package serviceImpl;
 
-import builder.UserBuilder;
-import model.UserDto;
+
+import model.User;
 import service.AuthService;
 import service.UtilService;
 
@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class AuthServiceImpl implements AuthService {
     private static AuthService instance = new AuthServiceImpl();
 
-    Map<String, UserDto> users;
+    Map<String, User> users;
 
     private AuthServiceImpl() {
         this.users = new HashMap<>();
@@ -32,7 +32,7 @@ public class AuthServiceImpl implements AuthService {
     public String join(Scanner sc) {
         System.out.println("아이디, 비밀번호, 비밀번호확인, 이름, 주민번호, 전화번호, " +
                 "주소, 직업, 무게, 키를 입력하세요");
-        UserDto person = new UserBuilder()
+        User person = User.builder()
                 .username(sc.next())
                 .password(sc.next())
                 .checkPassword(sc.next())
@@ -50,12 +50,12 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String addUsers() {
-        Map<String, UserDto> map = new HashMap<>();
+        Map<String, User> map = new HashMap<>();
         UtilService util = UtilServiceImpl.getInstance();
 
         for (int i = 0; i < 5; i++) {
             String username = util.createRandomUsername();
-            map.put(username, new UserBuilder()
+            map.put(username, User.builder()
                     .username(username)
                     .password("1")
                     .checkPassword("1")
@@ -67,18 +67,18 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public UserDto findUser(String username) {
-        UserDto user = new UserBuilder().build();
+    public User findUser(String username) {
+        User user = User.builder().build();
         return user;
     }
 
     @Override
-    public UserDto findUserById(Scanner sc) {
+    public User findUserById(Scanner sc) {
         return null;
     }
 
     @Override
-    public Map<String, UserDto> getUserMap() {
+    public Map<String, User> getUserMap() {
         users.forEach((k,v)-> System.out.println("{"+k+","+v+"},"));
         return users; // map을 컨트롤러로 보냄
     }

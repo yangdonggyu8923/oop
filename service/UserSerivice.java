@@ -1,21 +1,21 @@
 package service;
 
-import model.UserDto;
+import model.User;
 
 import java.util.List;
 import java.util.Map;
 
 public interface UserSerivice {
-    String login(UserDto user);
-    String join(UserDto user);
+    String login(User user);
+    String join(User user);
     String addUsers();
-    String findUserById(UserDto user);
-    String changePassword(UserDto user);
-    String secessionUser(UserDto user);
-    List<UserDto> findUserByName(UserDto user);
-    List<UserDto> findUserByJob(UserDto user);
-    List<UserDto> getUserList();
-    Map<String, UserDto> getUserMap();
+    String findUserById(User user);
+    String changePassword(User user);
+    String secessionUser(User user);
+    List<?> findUserByName(User user);
+    List<?> findUserByJob(User user);
+    List<?> getUserList();
+    Map<String, ?> getUserMap();
     String count();
 
 }
