@@ -10,6 +10,6 @@ public interface AccountService {
     String withdraw(Account account);
     String getBalance(String accountNumber);
     String cancel(String accountNumber);
-    List<Account> getAccounts();
+    List<?> getAccounts();
 
 }

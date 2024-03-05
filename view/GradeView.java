@@ -27,8 +27,8 @@ public class GradeView {
                             .english(util.createRandomInteger(0,100))
                             .build();
 
-        int totalScore = grade.getTotalScore(subjects);
-        double avg = grade.findAverage(totalScore);
+        int totalScore = Integer.parseInt(grade.getTotalScore(subjects));
+        double avg = Double.parseDouble(grade.findAverage(totalScore));
 
         System.out.printf("==== 성적표 ====\n" +
                 "이름 : %s\n" +

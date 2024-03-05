@@ -13,14 +13,14 @@ public class GradeServiceImpl implements GradeService {
     }
 
     @Override
-    public int getTotalScore(Subject subjects) {
+    public String getTotalScore(Subject subjects) {
         int totalScore = subjects.getKorean()+subjects.getEnglish()+subjects.getMath();
-        return totalScore;
+        return totalScore+"";
     }
 
     @Override
-    public double findAverage(int totalScore) {
+    public String findAverage(int totalScore) {
         double avg = totalScore/3;
-        return avg;
+        return avg+"";
     }
 }
